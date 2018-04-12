@@ -66,6 +66,7 @@ function search_click(){
     if(keywords == ""){
         return
     }
+    keywords = encodeURIComponent(keywords)
     if(type == "course"){
         request_url = "/course/list?keywords="+keywords
     }else if(type == "teacher"){

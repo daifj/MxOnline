@@ -1,6 +1,7 @@
 from django import forms
 from captcha.fields import CaptchaField
 
+from .models import UserProfile
 
 class LoginForm(forms.Form):
     '''登陆检查'''
@@ -25,3 +26,9 @@ class ModifyPwdForm(forms.Form):
     '''修改密码'''
     password1 = forms.CharField(required=True, min_length=6)
     password2 = forms.CharField(required=True, min_length=6)
+
+
+class UploadImageForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['image']

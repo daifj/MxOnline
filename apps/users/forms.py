@@ -29,6 +29,14 @@ class ModifyPwdForm(forms.Form):
 
 
 class UploadImageForm(forms.ModelForm):
+    '''上传头像图片'''
     class Meta:
         model = UserProfile
         fields = ['image']
+
+
+class UserInfoForm(forms.ModelForm):
+    '''用户输入'''
+    class Meta:
+        model = UserProfile
+        fields = ['nick_name', 'gender', 'birday', 'address', 'mobile']

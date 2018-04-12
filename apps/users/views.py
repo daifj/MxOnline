@@ -8,7 +8,7 @@ from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse, JsonResponse
 
 from .models import UserProfile, EmailVerifyRecord
-from .forms import LoginForm, RegisterForm, ForgetForm, ModifyPwdForm, UploadImageForm
+from .forms import LoginForm, RegisterForm, ForgetForm, ModifyPwdForm, UploadImageForm, UserInfoForm
 from utils.email_send import send_register_email
 from utils.mixin_utils import LoginRequiredMixin
 
@@ -141,6 +141,14 @@ class UserinfoView(LoginRequiredMixin, View):
     '''用户个人信息'''
     def get(self, request):
         return render(request, 'usercenter-info.html', {})
+
+    def post(self, request):
+        user_info_form = UserInfoForm(request.POST, instance=request.user)
+        if user_info_form.is_valid():
+            user_info_form.save()
+            return JsonResponse({'status': 'success'})
+        else:
+            return JsonResponse(user_info_form.errors)
 
 
 class UploadImageView(LoginRequiredMixin, View):

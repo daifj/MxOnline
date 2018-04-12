@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.backends import ModelBackend
@@ -153,7 +154,7 @@ class UploadImageView(LoginRequiredMixin, View):
             return JsonResponse({'status': 'fail', 'msg': '添加失败'})
 
 
-class UpdatePwdView(View):
+class UpdatePwdView(LoginRequiredMixin, View):
     '''个人中心修改用户密码'''
     def post(self,request):
         modify_form = ModifyPwdForm(request.POST)
@@ -169,3 +170,32 @@ class UpdatePwdView(View):
             return JsonResponse({'status': 'success'})
         else:
             return JsonResponse(modify_form.errors)
+
+
+
+class SendEmailCodeView(LoginRequiredMixin, View):
+    '''发送邮箱验证码'''
+    def get(self, request):
+        email = request.GET.get('email', '')
+
+        if UserProfile.objects.filter(email=email):
+            return JsonResponse({'email': '邮箱已经存在'})
+        send_register_email(email, 'update_email')
+
+        return JsonResponse({'status': 'success'})
+
+
+class UpdateEmailView(LoginRequiredMixin, View):
+    '''修改个人邮箱'''
+    def post(self, request):
+        email = request.POST.get('email', '')
+        code = request.POST.get('code', '')
+
+        existed_records = EmailVerifyRecord.objects.filter(email=email, code=code, send_type='update_email')
+        if existed_records:
+            user = request.user
+            user.email = email
+            user.save()
+            return JsonResponse({'status': 'success'})
+        else:
+            return JsonResponse({'email': '验证码出错'})

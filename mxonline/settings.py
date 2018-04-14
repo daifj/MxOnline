@@ -25,9 +25,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = 'j!rgrx(&85#uk^ke%^#imicb^!xzzq9=pg@r@um(xnbj%@d&d#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -154,3 +154,5 @@ EMAIL_FROM = '080219dfj@163.com'
 # 资源文件上传路径
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

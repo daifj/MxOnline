@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = 'j!rgrx(&85#uk^ke%^#imicb^!xzzq9=pg@r@um(xnbj%@d&d#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'captcha',
     'pure_pagination',
+    'django_cleanup',
+    'DjangoUeditor',
 ]
 AUTH_USER_MODEL = 'users.UserProfile'
 
@@ -155,4 +157,4 @@ EMAIL_FROM = '080219dfj@163.com'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')

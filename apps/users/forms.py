@@ -3,6 +3,7 @@ from captcha.fields import CaptchaField
 
 from .models import UserProfile
 
+
 class LoginForm(forms.Form):
     '''登陆检查'''
     username = forms.CharField(required=True)

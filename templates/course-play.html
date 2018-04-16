@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/muke/course/common-less.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/muke/course/learn-less.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/video-js.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aui.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mooc.css' %}" />
     <style>
         .video-js .vjs-big-play-button{
             top: 50%;
@@ -34,7 +36,7 @@
 
 {% block content %}
     <div id="main">
-        <div style="width: 1200px;height: 675px;margin-left: 256px">
+        <div style="width: 100%;height: 675px;margin-left: 5%;">
             <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="1200"
                   poster="http://video-js.zencoder.com/oceans-clip.png"
                   data-setup="{}">

@@ -1,6 +1,8 @@
+from courses.models import Course, Lesson
 from .models import EmailVerifyRecord, Banner
 import xadmin
 from xadmin import views
+
 
 class BaseSetting(object):
     enable_themes = True    # 设置主题
@@ -26,6 +28,7 @@ class BannerAdmin(object):
     list_display = ['title', 'image', 'url', 'index', 'add_time']
     search_fields = ['title', 'image', 'url', 'index']
     list_filter = ['title', 'image', 'url', 'index', 'add_time']
+
 
 xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
 xadmin.site.register(Banner, BannerAdmin)

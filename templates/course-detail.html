@@ -73,12 +73,12 @@
 						<p>世界名校，课程权威</p>
 					</div>
 					<div class="pic">
-                        <a href="/company/14/">
+                        <a href="{% url 'org:org_home' course.id %}">
                             <img width="150" height="80" src="{{ MEDIA_URL }}{{ course.course_org.image }}"/>
                         </a>
                     </div>
-					<a href="/company/14/">
-                        <h2 class="center" title="清华大学">{{ course.course_org.name }}</h2>
+					<a href="{% url 'org:org_home' course.id %}">
+                        <h2 class="center" title="{{ course.course_org.name }}">{{ course.course_org.name }}</h2>
                     </a>
 					<p class="center tell">电话：123123123</p>
 					<div class="btn  notlogin
@@ -134,7 +134,7 @@
                         {% for relate_course in relate_course %}
                             <dl>
                                 <dt>
-                                    <a target="_blank" href="">
+                                    <a target="_blank" href="{% url 'course:course_detail' relate_course.id %}">
                                         <img width="240" height="220" class="scrollLoading" src="{{ MEDIA_URL }}{{ relate_course.image }}"/>
                                     </a>
                                 </dt>

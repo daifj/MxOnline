@@ -102,7 +102,7 @@ class CourseDetailView(View):
 
         tag = course.tag
         if tag:
-            relate_courses = Course.objects.filter(tag=tag)[:1]
+            relate_courses = Course.objects.filter(tag=tag)[:2]
         else:
             relate_courses = []
         return render(request, 'course-detail.html', {
@@ -118,6 +118,8 @@ class CourseInfoView(LoginRequiredMixin, View):
     def get(self, request, course_id):
         course = Course.objects.get(id=int(course_id))
         course.students += 1
+        course.course_org.students += 1
+        course.course_org.save()
         course.save()
 
         # 查询用户是否已经关联了该课程

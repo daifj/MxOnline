@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import View
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from operation.models import UserFavorite
 from .models import CourseOrg, CityDict, Teacher
@@ -75,9 +75,10 @@ class AddUserAskView(View):
         userask_form = UserAskForm(request.POST)
         if userask_form.is_valid():
             user_ask = userask_form.save(commit=True)
-            return HttpResponse(json.dumps({'status':'success'}), content_type='application/json')
+            # return HttpResponse(json.dumps({"status":"success"}), content_type='application/json')
+            return JsonResponse({'status': 'success'})
         else:
-            return HttpResponse(json.dumps({'status':'fail', 'msg' : u'添加出错'}), content_type='application/json')
+            return JsonResponse({"status":"fail", "msg": "添加出错"})
 
 
 class OrgHomeView(View):

@@ -1,3 +1,4 @@
+# _*_ coding: utf-8 _*_
 from .models import Course, Video, Lesson, CourseResource, BannerCourse
 from organization.models import CourseOrg
 import xadmin

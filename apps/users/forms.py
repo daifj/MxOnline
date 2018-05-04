@@ -1,3 +1,4 @@
+# _*_ coding: utf-8 _*_
 from django import forms
 from captcha.fields import CaptchaField
 

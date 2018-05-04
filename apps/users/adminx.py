@@ -1,3 +1,4 @@
+# _*_ coding: utf-8 _*_
 from courses.models import Course, Lesson
 from .models import EmailVerifyRecord, Banner
 import xadmin

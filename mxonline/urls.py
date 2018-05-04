@@ -1,3 +1,4 @@
+# _*_ coding: utf-8 _*_
 """mxonline URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:

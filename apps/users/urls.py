@@ -1,3 +1,4 @@
+# _*_ coding: utf-8 _*_
 from django.conf.urls import include, url
 from .views import UserinfoView, UploadImageView, UpdatePwdView, SendEmailCodeView, UpdateEmailView
 from .views import MyCourseView, MyFavOrgView, MyFavTeacherView, MyFavCourseView, MyMessageView
